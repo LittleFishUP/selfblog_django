@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员注册界面</title>
+<link rel="stylesheet" type="text/css" href="/static/login/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/static/login/css/body.css"/> 
+</head>
+<body>
+<div class="container">
+	<section id="content">
+		<form action="/register/" method="POST">
+			{% csrf_token %}
+			<div>
+				
+				{% if messages %}
+				<ul class=flashes>
+					{% for message in messages %}
+					<h3>{{ message }}</h3>
+					{% endfor %}
+				</ul>
+				{% endif %}
+				
+			</div>
+			<h1>会员注册</h1>
+			<div>
+				<input type="text" placeholder="邮箱" required="" name="email" />
+            </div>
+            <!-- <div> -->
+				<!-- <input type="text" placeholder="姓名" required="" name="truename" /> -->
+			<!-- </div> -->
+			<div>
+				<input type="password" placeholder="密码" required="" name="password" />
+            </div>
+            <!-- <div> -->
+				<!-- <input type="text" placeholder="性别" required="" name="age" /> -->
+            <!-- </div> -->
+			 <div class="">
+				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>			</div> 
+			<div>
+				<!-- <input type="submit" value="Log in" /> -->
+				<input type="submit" value="注册" class="btn btn-primary" id="js-btn-login"/>
+				<!-- <a href="#">Register</a> -->
+			</div>
+			<div>
+				<a href="{% url 'login' %}"><h3>我有账号我要登录</h3></a>
+			</div>
+		</form><!-- form -->
+		
+	</section><!-- content -->
+</div>
+<!-- container -->
+
+
+<br><br><br><br>
+</body>
+</html>
