@@ -24,26 +24,31 @@
 			</div>
 			<h1>会员注册</h1>
 			<div>
+				<input type="text" placeholder="用户名称" required="" name="username" />
+			</div>
+			<div>
 				<input type="text" placeholder="邮箱" required="" name="email" />
-            </div>
-            <!-- <div> -->
-				<!-- <input type="text" placeholder="姓名" required="" name="truename" /> -->
-			<!-- </div> -->
+			</div>
+			<div>
+				<input type="number" placeholder="年龄" required="" name="age" />
+			</div>
+			<div>
+				<input type="url" placeholder="个人主站地址(选填)" required="" name="myurl" />
+            </div> 
 			<div>
 				<input type="password" placeholder="密码" required="" name="password" />
             </div>
-            <!-- <div> -->
-				<!-- <input type="text" placeholder="性别" required="" name="age" /> -->
-            <!-- </div> -->
-			 <div class="">
-				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>			</div> 
+            
+			<div class="">
+				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
+			</div> 
+
 			<div>
-				<!-- <input type="submit" value="Log in" /> -->
 				<input type="submit" value="注册" class="btn btn-primary" id="js-btn-login"/>
-				<!-- <a href="#">Register</a> -->
 			</div>
 			<div>
-				<a href="{% url 'login' %}"><h3>我有账号我要登录</h3></a>
+				<a href="{% url 'login' %}" id="changepage" style="font: bold 15px Helvetica, Arial, sans-serif;color: #85592e;
+				text-decoration: none;margin: 20px 0 35px 15px; padding:10px;">我有账号我要登录</a>
 			</div>
 		</form><!-- form -->
 		
