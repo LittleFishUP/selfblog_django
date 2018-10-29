@@ -3,7 +3,7 @@ $(function(){
     window.registerStatus = 1;
 
 
-// 为username控件绑定blur时间
+// 为username控件绑定blur事件
 $("input[name='username']").blur(function(){
     if($(this).val().trim().length == 0)
         return;
@@ -20,7 +20,7 @@ $("input[name='email']").blur(function(){
     if($(this).val().trim().length == 0)
         return;
     $.get(
-        '/check_input/',
+        '/check_input2/',
         {'email':$(this).val()},
         function(data){
             $('#email-tip').html(data.msg);
@@ -32,7 +32,7 @@ $("input[name='myurl']").blur(function(){
     if($(this).val().trim().length == 0)
         return $('#myurl-tip').html("选填项");
     $.get(
-        '/check_input/',
+        '/check_input3/',
         {'myurl':$(this).val()},
         function(data){
             $('#myurl-tip').html(data.msg);
