@@ -13,27 +13,16 @@
 	<section id="content">
 		<form action="/register/" method="POST">
 			{% csrf_token %}
-			<div>
-				
-				{% if messages %}
-				<ul class=flashes>
-					{% for message in messages %}
-					<h3>{{ message }}</h3>
-					{% endfor %}
-				</ul>
-				{% endif %}
-				
-			</div>
 			<h1>会员注册</h1>
 			<div>
 				<input type="text" placeholder="用户名称" required="" name="username" />
 				<br>
-				<span id="username-tip">{{ errMsg }}</span>
+				<span id="username-tip" style="color:red">{{ errMsg }}</span>
 			</div>
 			<div>
 				<input type="text" placeholder="邮箱" required="" name="email" />
 				<br>
-				<span id="email-tip">{{ errMsg }}</span>
+				<span id="email-tip" style="color:red">{{ errMsg }}</span>
 			</div>
 			<div>
 				<input type="number" placeholder="年龄" required="" name="age" />
@@ -41,7 +30,7 @@
 			<div>
 				<input type="url" placeholder="个人主站地址" required="" name="myurl" />
 				<br>
-				<span id="myurl-tip">{{ errMsg }}</span>
+				<span id="myurl-tip" style="color:red">{{ errMsg }}</span>
             </div> 
 			<div>
 				<input type="password" placeholder="密码" required="" name="password" />
