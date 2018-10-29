@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import *
 from django.contrib import messages
-from django.db.models import Exists
+import json
 # Create your views here.
 def blog_main_views(request):
     return render(request,'blog_main.html')
@@ -25,28 +25,86 @@ def login_views(request):
             #     resp.set_cookie('uid',user.id,60*60*60*7)
             return render(request,"blog_main.html")
         else:
-            messages.add_message(request, messages.INFO, '用户名或密码不正确,请检查!')
+            messages.add_message(request, messages.INFO, '邮箱或密码不正确,请检查!')
             return render(request,'login.html')
     
 
 def register_views(request):
     if request.method == "POST":
         #获取数据
+        uusername = request.POST['username']
         uemail = request.POST['email']
-        # utruename = request.form.get('truename')
-        upassword = request.POST['password']
-        # uage = request.form.get('age')
-        print(uemail)
-        print(upassword)
-        print(User.objects.filter(id=1))
-        if User.objects.filter(email = uemail):
-            messages.add_message(request, messages.ERROR, "账号已存在，请重新注册")
+        uage = request.POST['age']
+        if request.POST['myurl']:
+            umyurl = request.POST['myurl']
         else:
-            #转存数据库
-            newmes = User(email=uemail, password=upassword)
-            newmes.save()
-            #提示注册成功和返回登陆页面
-            messages.add_message(request, messages.SUCCESS, "注册成功请登录")
-            return redirect('/login')
+            umyurl=''
+        upassword = request.POST['password']
+        
+        # print(uemail)
+        # print(upassword)
+        # print(User.objects.filter(id=1))
+
+        # if User.objects.filter(email = uemail):
+        #     messages.add_message(request, messages.ERROR, "账号已存在，请重新注册")
+
+        # if User.objects.filter(email=uemail):
+        #     messages.add_message(request, messages.ERROR, "用户名已存在，请重新注册")
+               
+        #转存数据库
+        newmes = User(username=uusername,email=uemail,age=uage,myurl=umyurl,password=upassword)
+        newmes.save()
+        #提示注册成功和返回登陆页面
+        messages.add_message(request, messages.SUCCESS, "注册成功请登录")
+        return redirect('/login')
     return render(request,"register.html")
     
+def check_input_views(request):
+    # 接收前端传递过来的数据 - username 
+    username = request.GET['username']
+    users = User.objects.filter(username=username)
+    if users:
+        status = 1
+        msg = '用户名已经存在'
+    else:
+        status = 0
+        msg = ''
+    dic = {
+        'status': status,
+        'msg': msg,
+    }
+    return HttpResponse(json.dumps(dic))
+def check_input_views2(request):
+    #邮箱检查
+    email = request.GET['email']
+    users1 = User.objects.filter(email=email)
+    if users1:
+        status = 1
+        msg = '邮箱已经存在'
+    else:
+        status = 0
+        msg = ''
+        
+
+    dic = {
+        'status': status,
+        'msg': msg,
+    }
+    return HttpResponse(json.dumps(dic))
+def check_input_views3(request):
+    #个人主站地址检查
+    myurl = request.GET['myurl']
+    users2 = User.objects.filter(myurl=myurl)
+    if users2:
+        status = 1
+        msg = '主站地址已被使用'
+    else:
+        status = 0
+        msg=''
+       
+
+    dic = {
+        'status': status,
+        'msg': msg,
+    }
+    return HttpResponse(json.dumps(dic))
