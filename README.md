@@ -1,7 +1,7 @@
 # selfblog_django
 # 使用django搭建个人博客
 ## 项目区块
-### 区块1
+### 步骤1
 models区块，目标：搭建所需的数据库模型<br>
 如下所示<br>
         1.建立user表实体类<br>
@@ -90,5 +90,37 @@ class Comment(models.Model):
     def __str__(self):
         return self.content
 ```
-### 区块2
-搭建blog_main博客主界面，将其定义为baseview，后续跳转页面以baseview为基础，利用block函数进行编写。
+### 步骤2
+利用jquery的ajax对注册界面进行了功能添加<br>
+添加功能：验证唯一性数据是否重复<br>
+下面展示核心函数jquery的ajax<br>
+```
+$(function(){
+    // 记录用户名等是否已被注册过的状态值
+    window.registerStatus = 1;
+
+
+// 为username控件绑定blur事件
+$("input[name='username']").blur(function(){
+    if($(this).val().trim().length == 0)
+        return;
+    $.get(
+        '/check_input/',
+        {'username':$(this).val()},
+        function(data){
+            $('#username-tip').html(data.msg);
+            window.registerStatus=data.status;
+        },'json'
+    );
+    });
+/**2.为#formReg表单元素绑定submit事件*/
+$("#formReg").submit(function () {
+    //判断registStatus的值，决定表单是否要被提交
+    // console.log('registStatus:' + registStatus);
+    if (window.registStatus == 1)
+        return false;
+    return true;
+    });
+});
+```
+
