@@ -4,7 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>会员注册界面</title>
 <link rel="stylesheet" type="text/css" href="/static/login/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/static/login/css/body.css"/> 
+<link rel="stylesheet" type="text/css" href="/static/login/css/body.css"/>
+<script src="/static/login/js/jquery-1.11.3.js"></script>
+<script src="/static/login/js/register.js"></script>
 </head>
 <body>
 <div class="container">
@@ -25,15 +27,21 @@
 			<h1>会员注册</h1>
 			<div>
 				<input type="text" placeholder="用户名称" required="" name="username" />
+				<br>
+				<span id="username-tip">{{ errMsg }}</span>
 			</div>
 			<div>
 				<input type="text" placeholder="邮箱" required="" name="email" />
+				<br>
+				<span id="email-tip">{{ errMsg }}</span>
 			</div>
 			<div>
 				<input type="number" placeholder="年龄" required="" name="age" />
 			</div>
 			<div>
-				<input type="url" placeholder="个人主站地址(选填)" required="" name="myurl" />
+				<input type="url" placeholder="个人主站地址" required="" name="myurl" />
+				<br>
+				<span id="myurl-tip">{{ errMsg }}</span>
             </div> 
 			<div>
 				<input type="password" placeholder="密码" required="" name="password" />
