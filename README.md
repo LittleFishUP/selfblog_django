@@ -4,13 +4,13 @@
 ### 区块1
 models区块，目标：搭建所需的数据库模型<br>
 如下所示<br>
-        1.建立user表实体类
-        包含用户名称（username）varchar
-        邮箱（email）varchar
-        年级（age）int
-        个人主站地址（myurl）varchar（可以为空）
-        密码（password）varchar
-        是否是作者（tinyint）默认为False
+        1.建立user表实体类<br>
+        包含用户名称（username）varchar<br>
+        邮箱（email）varchar<br>
+        年级（age）int<br>
+        个人主站地址（myurl）varchar（可以为空）<br>
+        密码（password）varchar<br>
+        是否是作者（tinyint）默认为False<br>
 ```
 class User(models.Model):
     username = models.CharField(max_length=30,verbose_name='用户名称')
