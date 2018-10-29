@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include,re_path
 from .views import *
 
 
@@ -8,4 +8,7 @@ urlpatterns = [
     path('login/',login_views,name='login'),
     path('',login_views),
     path('register/',register_views,name='register'),
+    path('check_input/',check_input_views),
+    path('check_input2/', check_input_views2),
+    path('check_input3/', check_input_views3),
 ]
