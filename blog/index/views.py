@@ -6,7 +6,11 @@ from django.contrib import messages
 import json
 # Create your views here.
 def blog_main_views(request):
-    return render(request,'blog_main.html')
+    #加入博客信息数据库读取
+    blog = Blog.objects.all()
+    #推送最新更新取最后3个
+    new = Blog.objects.all()
+    return render(request,'blog_main.html',locals())
 
 def login_views(request):
     if request.method == 'GET':
@@ -108,3 +112,6 @@ def check_input_views3(request):
         'msg': msg,
     }
     return HttpResponse(json.dumps(dic))
+
+def inheirt_page_views(request):
+    return render(request,"writings.html")
