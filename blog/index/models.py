@@ -60,6 +60,9 @@ class Blog(models.Model):
     author = models.CharField('作者', max_length=16)
     content = models.TextField('内容')
     pub = models.DateField('发布时间', auto_now_add=True)
+    img_url = models.ImageField(
+        verbose_name="博客图示", null=True, upload_to="static/blog_main/blogimg/")
+    page_url = models.URLField(verbose_name="博文主页",null=True,blank=True)
     category = models.ForeignKey(
         Category, verbose_name='类别', on_delete='CASCADE')  # 多对一（博客--类别）
     tag = models.ManyToManyField(Tag, verbose_name='标签')  # (多对多）
