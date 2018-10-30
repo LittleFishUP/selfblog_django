@@ -12,3 +12,9 @@ urlpatterns = [
     path('check_input2/', check_input_views2),
     path('check_input3/', check_input_views3),
 ]
+
+
+#增加网页跳转
+urlpatterns +=[
+    path('inheirt_page/',inheirt_page_views),
+]
