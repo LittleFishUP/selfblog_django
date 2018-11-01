@@ -33,7 +33,7 @@
             <a href="/"><img src="/{{news.img_url}}"><span>观看全部博文</span></a>
           </ul>
           <p><a href="/">{{news.title}}</a></p>
-          <figcaption>{{news.content}}...</figcaption>
+          <figcaption>{{news.content|striptags|truncatechars:120}}...</figcaption>
         </figure>
         {% endfor %}
       </div>
@@ -46,9 +46,9 @@
           <div class="cbp_tmicon"></div>
           <div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s">
             {% comment %} 博客标题 {% endcomment %}
-            <h2>三步实现滚动条触动css动画效果</h2>
+            <h2>{{blogs.title}}</h2>
             {% comment %} 博客内容。对应图片。链接地址 {% endcomment %}
-            <p><span class="blogpic"><a href="{{blogs.page_url}}"><img src="/{{blogs.img_url}}"></a></span>{{blogs.content}}...</p>
+            <p><span class="blogpic"><a href="{{blogs.page_url}}"><img src="/{{blogs.img_url}}"></a></span>{{blogs.content|striptags|truncatechars:120}}...</p>
             <a href="{{blogs.page_url}}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
           </div>
         </li>

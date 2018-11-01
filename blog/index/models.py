@@ -1,5 +1,5 @@
 from django.db import models
-
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 #1.建立user表实体类
@@ -58,7 +58,7 @@ class Tag(models.Model):
 class Blog(models.Model):
     title = models.CharField('标题', max_length=32)
     author = models.CharField('作者', max_length=16)
-    content = models.TextField('内容')
+    content = RichTextField('正文')
     pub = models.DateField('发布时间', auto_now_add=True)
     img_url = models.ImageField(
         verbose_name="主页博客图片", null=True, upload_to="static/blog_main/blogimg/")

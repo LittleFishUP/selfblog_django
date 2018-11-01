@@ -8,8 +8,10 @@ import json
 def blog_main_views(request):
     #加入博客信息数据库读取
     blog = Blog.objects.all()
+   
     #推送最新更新取最后3个
     new = Blog.objects.all()
+
     return render(request,'blog_main.html',locals())
 
 def login_views(request):
@@ -27,7 +29,7 @@ def login_views(request):
             #判断是否存进cookie
             # if 'isSaved' in request.POST:
             #     resp.set_cookie('uid',user.id,60*60*60*7)
-            return render(request,"blog_main.html")
+            return redirect('/blog_main/')
         else:
             messages.add_message(request, messages.INFO, '邮箱或密码不正确,请检查!')
             return render(request,'login.html')
