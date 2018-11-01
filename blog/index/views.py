@@ -117,3 +117,6 @@ def check_input_views3(request):
 
 def inheirt_page_views(request):
     return render(request,"writings.html")
+
+def about_me_views(request):
+    return render(request,"about_me.html")
