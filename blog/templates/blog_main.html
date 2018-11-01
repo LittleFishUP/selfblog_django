@@ -33,7 +33,7 @@
             <a href="/"><img src="/{{news.img_url}}"><span>观看全部博文</span></a>
           </ul>
           <p><a href="/">{{news.title}}</a></p>
-          <figcaption>{{news.content|striptags|truncatechars:120}}...</figcaption>
+          <figcaption>{{news.content|striptags|truncatechars:50}}</figcaption>
         </figure>
         {% endfor %}
       </div>
@@ -48,7 +48,7 @@
             {% comment %} 博客标题 {% endcomment %}
             <h2>{{blogs.title}}</h2>
             {% comment %} 博客内容。对应图片。链接地址 {% endcomment %}
-            <p><span class="blogpic"><a href="{{blogs.page_url}}"><img src="/{{blogs.img_url}}"></a></span>{{blogs.content|striptags|truncatechars:120}}...</p>
+            <p><span class="blogpic"><a href="{{blogs.page_url}}"><img src="/{{blogs.img_url}}"></a></span>{{blogs.content|striptags|truncatechars:119}}</p>
             <a href="{{blogs.page_url}}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
           </div>
         </li>
