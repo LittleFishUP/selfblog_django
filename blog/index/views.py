@@ -10,7 +10,7 @@ def blog_main_views(request):
     blog = Blog.objects.all()
    
     #推送最新更新取最后3个
-    new = Blog.objects.all()
+    new = Blog.objects.all().order_by("id").reverse()[:3]
 
     return render(request,'blog_main.html',locals())
 
