@@ -17,4 +17,5 @@ urlpatterns = [
 #增加网页跳转
 urlpatterns +=[
     path('inheirt_page/',inheirt_page_views),
+    path('about_me/',about_me_views),
 ]
