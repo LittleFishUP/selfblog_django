@@ -1,0 +1,24 @@
+{% extends "blog_main.html" %}
+
+{% block link %}
+<link href="/static/blog_main/css/blog_page.css" rel="stylesheet">
+{% endblock %}
+
+{% block article %}
+<div class="container">
+    <div class="blog_page_view">
+        <h1>详细博文</h1>
+        {% for blogs in page_of_blogs %}
+            {{blogs.content|safe}}
+        {% endfor %}
+        <h1>留言评论</h1>
+    </div>
+    <div class="page">
+        <p>博文总数：{{blog_all_list.count}}</p>
+        {% for page_num in paginator.page_range %}
+        <a href="?page={{page_num}}">{{page_num}}</a>
+        {% endfor %}
+        <a href="/news/index_2.html">&gt;</a>
+        <a href="/news/index_5.html">&gt;&gt;</a></div>
+</div>
+{% endblock %}

@@ -21,11 +21,12 @@
 <body>
   <header>
     <div class="logo" data-scroll-reveal="enter right over 1s"><a href="/blog_main/"><img src="/static/blog_main/images/logo.png"></a></div>
-    <nav class="topnav" data-scroll-reveal="enter bottom over 1s after 1s"><a href="/blog_main/"><span>首页</span><span
-          class="en">Home</span></a><a href="/about_me/"><span>关于我</span><span class="en">About</span></a><a href="manshenghuo.html"><span>慢生活</span><span
-          class="en">Life</span></a><a href="learn.html"><span>碎言碎语</span><span class="en">Doing</span></a><a href="mbfx.html"><span>模板分享</span><span
-          class="en">Share</span></a><a href="learn.html"><span>学无止境</span><span class="en">Learn</span></a><a href="gbook.html"><span>留言</span><span
-          class="en">Saying</span></a></nav>
+    <nav class="topnav" data-scroll-reveal="enter bottom over 1s after 1s">
+      <a href="/blog_main/"><span>首页</span><span class="en">Home</span></a>
+      <a href="/about_me/"><span>关于我</span><span class="en">About</span></a>
+      <a href="/blog_page_views/?page=1"><span>博文浏览</span><span class="en">Blog</span></a>
+      <a href="/login/"><span>登录/注册</span><span class="en">Login or Register</span></a>
+      </nav>
   </header>
   <article>
     {% block article %}
@@ -34,9 +35,9 @@
         {% for news in new %}
         <figure>
           <ul>
-            <a href="/"><img src="/{{news.img_url}}"><span>观看全部博文</span></a>
+            <a href="/blog_page_views/{{news.page_url}}"><img src="/{{news.img_url}}"><span>观看全部博文</span></a>
           </ul>
-          <p><a href="/">{{news.title}}</a></p>
+          <p><a href="/blog_page_views/{{news.page_url}}">{{news.title}}</a></p>
           <figcaption>{{news.content|striptags|truncatechars:50}}</figcaption>
         </figure>
         {% endfor %}
@@ -52,8 +53,8 @@
             {% comment %} 博客标题 {% endcomment %}
             <h2>{{blogs.title}}</h2>
             {% comment %} 博客内容。对应图片。链接地址 {% endcomment %}
-            <p><span class="blogpic"><a href="{{blogs.page_url}}"><img src="/{{blogs.img_url}}"></a></span>{{blogs.content|striptags|truncatechars:119}}</p>
-            <a href="{{blogs.page_url}}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+            <p><span class="blogpic"><a href="/blog_page_views/{{news.page_url}}"><img src="/{{blogs.img_url}}"></a></span>{{blogs.content|striptags|truncatechars:119}}</p>
+            <a href="/blog_page_views/{{news.page_url}}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
           </div>
         </li>
       {% endfor %}

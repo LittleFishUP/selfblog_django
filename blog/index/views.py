@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator
 from .models import *
 from django.contrib import messages
 import json
@@ -10,7 +11,7 @@ def blog_main_views(request):
     blog = Blog.objects.all()
    
     #推送最新更新取最后3个
-    new = Blog.objects.all().order_by("id").reverse()[:3]
+    new = Blog.objects.all()[:3]
 
     return render(request,'blog_main.html',locals())
 
@@ -115,8 +116,17 @@ def check_input_views3(request):
     }
     return HttpResponse(json.dumps(dic))
 
-def inheirt_page_views(request):
+
     return render(request,"writings.html")
 
 def about_me_views(request):
     return render(request,"about_me.html")
+
+def blog_page_views(request):
+    page_num = request.GET.get('page',1) #获取url的页面参数（GET请求）
+    blog_all_list = Blog.objects.order_by('id').all()
+    paginator = Paginator(blog_all_list,1)#每一个进行分页
+    page_of_blogs=paginator.get_page(page_num)
+
+    
+    return render(request,"blog_page_views.html",locals())

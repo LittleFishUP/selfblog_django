@@ -6,7 +6,7 @@ from .views import *
 urlpatterns = [
     path('blog_main/',blog_main_views,name='blog_main'),
     path('login/',login_views,name='login'),
-    path('',login_views),
+    path('',blog_main_views),
     path('register/',register_views,name='register'),
     path('check_input/',check_input_views),
     path('check_input2/', check_input_views2),
@@ -16,6 +16,7 @@ urlpatterns = [
 
 #增加网页跳转
 urlpatterns +=[
-    path('inheirt_page/',inheirt_page_views),
     path('about_me/',about_me_views),
+    path('blog_page_views/',blog_page_views),
+   
 ]
