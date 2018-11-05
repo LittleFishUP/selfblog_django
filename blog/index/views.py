@@ -126,7 +126,7 @@ def blog_page_views(request):
     page_num = request.GET.get('page',1) #获取url的页面参数（GET请求）
     blog_all_list = Blog.objects.order_by('id').all()
     paginator = Paginator(blog_all_list,1)#每一个进行分页
-    page_of_blogs=paginator.get_page(page_num)
+    page_of_blogs=paginator.get_page(page_num) 
 
     
     return render(request,"blog_page_views.html",locals())
