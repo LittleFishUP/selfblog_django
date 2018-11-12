@@ -26,7 +26,7 @@ footer { text-align: center; padding: 20px 0 }
 .page{ margin:20px 0 ; text-align:center; width:100%;overflow: hidden;}
 .page a b {color: #aee1ff;}
 .page>b,.page a {margin: 0 2px;height: 26px;line-height: 26px;border-radius: 50%;width: 26px;text-align: center;display: inline-block}
-.page a {margin: 0 2px;height: 26px;line-height: 26px;border-radius: 50%;width: 26px;text-align: center;display: inline-block}/* ���IE6 */
+.page a {margin: 0 2px;height: 26px;line-height: 26px;border-radius: 50%;width: 26px;text-align: center;display: inline-block}
 .page>b,.page a:hover{background: #2a455d;color: #FFF;}
 .page a {color: #aee1ff;border: #89c9ef 1px solid}
 .ctitle{ position:relative}

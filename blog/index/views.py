@@ -125,8 +125,10 @@ def about_me_views(request):
 def blog_page_views(request):
     page_num = request.GET.get('page',1) #获取url的页面参数（GET请求）
     blog_all_list = Blog.objects.order_by('id').all()
-    paginator = Paginator(blog_all_list,1)#每一个进行分页
+    paginator = Paginator(blog_all_list,1)#每一篇进行分页
     page_of_blogs=paginator.get_page(page_num) 
-
+    
+    page_range = [x for x in range(int(page_num)-2, int(page_num)+5) if 0 < x <= paginator.num_pages]
+    
     
     return render(request,"blog_page_views.html",locals())
