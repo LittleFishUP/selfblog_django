@@ -117,7 +117,6 @@ def check_input_views3(request):
     return HttpResponse(json.dumps(dic))
 
 
-    return render(request,"writings.html")
 
 def about_me_views(request):
     return render(request,"about_me.html")
