@@ -25,7 +25,7 @@ SECRET_KEY = '@ostdaf_vz3mb-p7c2(mz#2bvv@$(3tr9da^illt0^o%_364!%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
